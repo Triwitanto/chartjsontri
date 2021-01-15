@@ -15,8 +15,8 @@ const Dankmemes = () => {
       .then(res => {
         console.log(res);
         for (const dataObj of res.data) {
-          empProv.push(parseInt(dataObj.attributes.Provinsi));
-          empPos.push(parseInt(dataObj.attributes.Kasus_Posi));
+          empProv.push(dataObj.attributes.Kode_Provi);
+          empPos.push(dataObj.attributes.Kasus_Posi);
         }
         setChartData({
           labels: empPos,
