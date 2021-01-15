@@ -8,22 +8,22 @@ const Dankmemes = () => {
   const [employeeAge, setEmployeeAge] = useState([]);
 
   const chart = () => {
-    let empProv = [];
-    let empPos = [];
+    let empSal = [];
+    let empAge = [];
     axios
-      .get("http://api.kawalcorona.com/indonesia/provinsi")
+      .get("http://dummy.restapiexample.com/api/v1/employees")
       .then(res => {
         console.log(res);
-        for (const dataObj of res.data) {
-          empProv.push(dataObj.attributes.Kode_Provi);
-          empPos.push(dataObj.attributes.Kasus_Posi);
+        for (const dataObj of res.data.data) {
+          empSal.push(parseInt(dataObj.employee_salary));
+          empAge.push(parseInt(dataObj.employee_age));
         }
         setChartData({
-          labels: empPos,
+          labels: empAge,
           datasets: [
             {
               label: "level of thiccness",
-              data: empProv,
+              data: empSal,
               backgroundColor: ["rgba(75, 192, 192, 0.6)"],
               borderWidth: 4
             }
@@ -33,7 +33,7 @@ const Dankmemes = () => {
       .catch(err => {
         console.log(err);
       });
-    console.log(empProv, empPos);
+    console.log(empSal, empAge);
   };
 
   useEffect(() => {
