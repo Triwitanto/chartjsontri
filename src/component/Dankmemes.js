@@ -11,7 +11,7 @@ const Dankmemes = () => {
     let empProv = [];
     let empPos = [];
     axios
-      .get("https://api.kawalcorona.com/indonesia/provinsi")
+      .get("http://api.kawalcorona.com/indonesia/provinsi")
       .then(res => {
         console.log(res);
         for (const dataObj of res.data) {
