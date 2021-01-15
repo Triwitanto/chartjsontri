@@ -11,12 +11,12 @@ const Dankmemes = () => {
     let empSal = [];
     let empAge = [];
     axios
-      .get("http://api.kawalcorona.com/indonesia/provinsi")
+      .get("http://dummy.restapiexample.com/api/v1/employees")
       .then(res => {
         console.log(res);
-        for (const dataObj of res) {
-          empSal.push(dataObj.attributes.Kasus_Posi);
-          empAge.push(dataObj.attributes.Kode_Provi);
+        for (const dataObj of res.data.data) {
+          empSal.push(parseInt(dataObj.employee_salary));
+          empAge.push(parseInt(dataObj.employee_age));
         }
         setChartData({
           labels: empAge,
